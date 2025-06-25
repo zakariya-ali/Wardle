@@ -1,0 +1,17 @@
+[
+  {
+    "id": "ward_classic",
+    "name": "Stealth Ward",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_elderwood_potion.png"
+  },
+  {
+    "id": "ward_lunar",
+    "name": "Lunar Revel Ward",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_elderwood_potion.png"
+  },
+  {
+    "id": "ward_poro",
+    "name": "Poro Ward",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_elderwood_potion.png"
+  }
+]

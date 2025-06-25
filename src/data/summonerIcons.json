@@ -1,0 +1,17 @@
+[
+  {
+    "id": "icon_1",
+    "name": "Minion Icon",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_elderwood_potion.png"
+  },
+  {
+    "id": "icon_2",
+    "name": "Dragon Icon",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_elderwood_potion.png"
+  },
+  {
+    "id": "icon_3",
+    "name": "Baron Icon",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_elderwood_potion.png"
+  }
+]

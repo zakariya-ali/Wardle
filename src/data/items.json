@@ -1,0 +1,30 @@
+[
+  {
+    "id": "infinity_edge",
+    "name": "Infinity Edge",
+    "description": "Massively enhances critical strikes.",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_elderwood_potion.png",
+    "cost": 3400
+  },
+  {
+    "id": "rabadon",
+    "name": "Rabadon's Deathcap",
+    "description": "Significantly increases Ability Power.",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_elderwood_potion.png",
+    "cost": 3600
+  },
+  {
+    "id": "guardian_angel",
+    "name": "Guardian Angel",
+    "description": "Grants a second chance upon death.",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_elderwood_potion.png",
+    "cost": 2800
+  },
+  {
+    "id": "zhonyas",
+    "name": "Zhonya's Hourglass",
+    "description": "Activate to become untargetable and invulnerable.",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_elderwood_potion.png",
+    "cost": 2600
+  }
+]

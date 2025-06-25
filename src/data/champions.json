@@ -1,0 +1,97 @@
+[
+  {
+    "id": "aatrox",
+    "name": "Aatrox",
+    "gender": "Male",
+    "positions": ["Top"],
+    "species": ["Darkin"],
+    "resource": "Manaless",
+    "rangeType": "Melee",
+    "regions": ["Runeterra"],
+    "releaseYear": 2013,
+    "quotes": ["I am not your enemy, I am THE enemy!", "Behold the might of the Darkin!"],
+    "abilities": {
+      "Q": { "name": "The Darkin Blade", "icon": "aatrox_q.png" },
+      "W": { "name": "Infernal Chains", "icon": "aatrox_w.png" },
+      "E": { "name": "Umbral Dash", "icon": "aatrox_e.png" },
+      "R": { "name": "World Ender", "icon": "aatrox_r.png" }
+    },
+    "splashArt": "https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt40bbf23dfd4a8b9c/60ee0e61db4c7e1dcde13b9e/RiotX_ChampionList_aatrox.jpg"
+  },
+  {
+    "id": "ahri",
+    "name": "Ahri",
+    "gender": "Female",
+    "positions": ["Mid"],
+    "species": ["Vastayan"],
+    "resource": "Mana",
+    "rangeType": "Ranged",
+    "regions": ["Ionia"],
+    "releaseYear": 2011,
+    "quotes": ["Don't you trust me?", "Charm is so much more than beauty."],
+    "abilities": {
+      "Q": { "name": "Orb of Deception", "icon": "ahri_q.png" },
+      "W": { "name": "Fox-Fire", "icon": "ahri_w.png" },
+      "E": { "name": "Charm", "icon": "ahri_e.png" },
+      "R": { "name": "Spirit Rush", "icon": "ahri_r.png" }
+    },
+    "splashArt": "https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt8a1be8efd83886e7/60ee0e64b8b94c1dcba3db6f/RiotX_ChampionList_ahri.jpg"
+  },
+  {
+    "id": "akali",
+    "name": "Akali",
+    "gender": "Female",
+    "positions": ["Mid", "Top"],
+    "species": ["Human"],
+    "resource": "Energy",
+    "rangeType": "Melee",
+    "regions": ["Ionia"],
+    "releaseYear": 2010,
+    "quotes": ["Balance is weakness!", "Without a sound."],
+    "abilities": {
+      "Q": { "name": "Five Point Strike", "icon": "akali_q.png" },
+      "W": { "name": "Twilight Shroud", "icon": "akali_w.png" },
+      "E": { "name": "Shuriken Flip", "icon": "akali_e.png" },
+      "R": { "name": "Perfect Execution", "icon": "akali_r.png" }
+    },
+    "splashArt": "https://images.contentstack.io/v3/assets/blt187521ff0727be24/blteddf858e4b19c8b8/60ee0e6454c7371dcac4cc2e/RiotX_ChampionList_akali.jpg"
+  },
+  {
+    "id": "yasuo",
+    "name": "Yasuo",
+    "gender": "Male",
+    "positions": ["Mid", "Top"],
+    "species": ["Human"],
+    "resource": "Wind",
+    "rangeType": "Melee",
+    "regions": ["Ionia"],
+    "releaseYear": 2013,
+    "quotes": ["Death is like the wind - always by my side.", "Hasagi!"],
+    "abilities": {
+      "Q": { "name": "Steel Tempest", "icon": "yasuo_q.png" },
+      "W": { "name": "Wind Wall", "icon": "yasuo_w.png" },
+      "E": { "name": "Sweeping Blade", "icon": "yasuo_e.png" },
+      "R": { "name": "Last Breath", "icon": "yasuo_r.png" }
+    },
+    "splashArt": "https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt5c9ad9895c8b0ecd/60ee0e69b8b94c1dcba3dbb1/RiotX_ChampionList_yasuo.jpg"
+  },
+  {
+    "id": "jinx",
+    "name": "Jinx",
+    "gender": "Female",
+    "positions": ["ADC"],
+    "species": ["Human"],
+    "resource": "Mana",
+    "rangeType": "Ranged",
+    "regions": ["Zaun"],
+    "releaseYear": 2013,
+    "quotes": ["Rules are made to be broken... like buildings! Or people!", "I'm crazy! Got a doctor's note."],
+    "abilities": {
+      "Q": { "name": "Switcheroo!", "icon": "jinx_q.png" },
+      "W": { "name": "Zap!", "icon": "jinx_w.png" },
+      "E": { "name": "Flame Chompers!", "icon": "jinx_e.png" },
+      "R": { "name": "Super Mega Death Rocket!", "icon": "jinx_r.png" }
+    },
+    "splashArt": "https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt6c98c8b07b9dc8de/60ee0e67b2b5131dcba3dc83/RiotX_ChampionList_jinx.jpg"
+  }
+]

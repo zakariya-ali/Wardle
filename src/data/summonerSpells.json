@@ -1,0 +1,32 @@
+[
+  {
+    "id": "flash",
+    "name": "Flash",
+    "description": "Teleports your champion a short distance toward your cursor's location.",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/perks/styles/precision/presenceofmind/presenceofmind.png"
+  },
+  {
+    "id": "ignite",
+    "name": "Ignite",
+    "description": "Ignites target enemy champion, dealing true damage over time.",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/perks/styles/precision/presenceofmind/presenceofmind.png"
+  },
+  {
+    "id": "heal",
+    "name": "Heal",
+    "description": "Restores Health to your champion and target allied champion.",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/perks/styles/precision/presenceofmind/presenceofmind.png"
+  },
+  {
+    "id": "barrier",
+    "name": "Barrier",
+    "description": "Shields your champion from incoming damage.",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/perks/styles/precision/presenceofmind/presenceofmind.png"
+  },
+  {
+    "id": "teleport",
+    "name": "Teleport",
+    "description": "After channeling, teleports your champion to target allied structure.",
+    "icon": "https://raw.communitydragon.org/latest/game/assets/perks/styles/precision/presenceofmind/presenceofmind.png"
+  }
+]
