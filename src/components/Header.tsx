@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ onReset }) => {
         <div className="flex items-center space-x-3">
           <Crown className="w-8 h-8 text-lol-gold" />
           <div>
-            <h1 className="text-3xl font-bold">wardle</h1>
+            <h1 className="text-3xl font-bold">Wardle</h1>
             <p className="text-sm opacity-80">League of Legends Guessing Game</p>
           </div>
         </div>
