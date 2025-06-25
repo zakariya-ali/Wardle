@@ -146,7 +146,7 @@ function App() {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lol-gold mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading LoLdle...</p>
+          <p className="text-gray-600">Loading wardle...</p>
         </div>
       </div>
     );
@@ -171,7 +171,7 @@ function App() {
       <footer className="bg-lol-dark text-white py-6 mt-12">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <p className="text-sm opacity-80">
-            LoLdle - League of Legends Guessing Game | Daily puzzles reset at midnight UTC
+            wardle - League of Legends Guessing Game | Daily puzzles reset at midnight UTC
           </p>
         </div>
       </footer>

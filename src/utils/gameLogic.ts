@@ -86,7 +86,7 @@ export const compareChampionAttributes = (guess: Champion, answer: Champion) => 
 };
 
 export const loadGameState = (): GameState => {
-  const saved = localStorage.getItem('loldle-game-state');
+  const saved = localStorage.getItem('wardle-game-state');
   if (saved) {
     return JSON.parse(saved);
   }
@@ -101,5 +101,5 @@ export const loadGameState = (): GameState => {
 };
 
 export const saveGameState = (state: GameState): void => {
-  localStorage.setItem('loldle-game-state', JSON.stringify(state));
+  localStorage.setItem('wardle-game-state', JSON.stringify(state));
 };
