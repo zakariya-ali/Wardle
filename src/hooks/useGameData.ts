@@ -141,6 +141,35 @@ const transformItems = (itemsData: any[]): Item[] => {
     }));
 };
 
+// Utility function to retry fetch operations
+const fetchWithRetry = async (url: string, maxRetries: number = 3, delay: number = 1000): Promise<Response> => {
+  let lastError: Error | null = null;
+  
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      console.log(`Fetching ${url} (attempt ${attempt}/${maxRetries})`);
+      const response = await fetch(url);
+      if (response.ok) {
+        return response;
+      }
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    } catch (error) {
+      lastError = error as Error;
+      console.warn(`Attempt ${attempt} failed for ${url}:`, error);
+      
+      // Don't delay after the last attempt
+      if (attempt < maxRetries) {
+        console.log(`Retrying in ${delay}ms...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        // Increase delay for next attempt (exponential backoff)
+        delay *= 1.5;
+      }
+    }
+  }
+  
+  throw lastError || new Error('All retry attempts failed');
+};
+
 export const useGameData = () => {
   const [champions, setChampions] = useState<Champion[]>([]);
   const [items, setItems] = useState<Item[]>([]);
@@ -154,7 +183,7 @@ export const useGameData = () => {
       try {
         console.log('Loading game data from APIs...');
         
-        // Fetch all data in parallel
+        // Fetch all data in parallel with retry mechanism
         const [
           championSummaryResponse,
           championsResponse,
@@ -164,13 +193,13 @@ export const useGameData = () => {
           spellsResponse,
           itemsResponse
         ] = await Promise.all([
-          fetch(CHAMPION_SUMMARY_URL),
-          fetch(CHAMPIONS_URL),
-          fetch(SKINS_URL),
-          fetch(WARD_SKINS_URL),
-          fetch(SUMMONER_ICONS_URL),
-          fetch(SUMMONER_SPELLS_URL),
-          fetch(ITEMS_URL)
+          fetchWithRetry(CHAMPION_SUMMARY_URL),
+          fetchWithRetry(CHAMPIONS_URL),
+          fetchWithRetry(SKINS_URL),
+          fetchWithRetry(WARD_SKINS_URL),
+          fetchWithRetry(SUMMONER_ICONS_URL),
+          fetchWithRetry(SUMMONER_SPELLS_URL),
+          fetchWithRetry(ITEMS_URL)
         ]);
 
         // Parse JSON responses
