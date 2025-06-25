@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { Champion, Item, SummonerSpell, Ward, SummonerIcon } from '../types';
 
 // Import local fallback data
-import championsData from '../data/champions.json';
-import itemsData from '../data/items.json';
-import spellsData from '../data/summonerSpells.json';
-import wardsData from '../data/wards.json';
-import iconsData from '../data/summonerIcons.json';
+import championSummaryFallback from '../data/champion-summary.json';
+import championsFallback from '../data/champions.json';
+import skinsFallback from '../data/skins.json';
+import wardsFallback from '../data/ward-skins.json';
+import iconsFallback from '../data/summoner-icons.json';
+import spellsFallback from '../data/summoner-spells.json';
+import itemsFallback from '../data/items.json';
 
 // API URLs
 const CHAMPION_SUMMARY_URL = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json';
@@ -240,15 +242,34 @@ export const useGameData = () => {
         setItems(transformedItems);
 
       } catch (error) {
-        console.error('Failed to load game data:', error);
-        
+        console.error('Failed to load game data from APIs:', error);
         console.log('Using local fallback data...');
-        // Fallback to local data instead of empty arrays
-        setChampions(championsData as Champion[]);
-        setItems(itemsData as Item[]);
-        setSpells(spellsData as SummonerSpell[]);
-        setWards(wardsData as Ward[]);
-        setIcons(iconsData as SummonerIcon[]);
+        
+        try {
+          // Transform fallback data to our expected format
+          const transformedChampions = transformChampionData(championSummaryFallback, championsFallback, skinsFallback);
+          const transformedSpells = transformSummonerSpells(spellsFallback);
+          const transformedWards = transformWards(wardsFallback);
+          const transformedIcons = transformSummonerIcons(iconsFallback);
+          const transformedItems = transformItems(itemsFallback);
+
+          console.log(`Loaded fallback data: ${transformedChampions.length} champions, ${transformedSpells.length} spells, ${transformedWards.length} wards, ${transformedIcons.length} icons, ${transformedItems.length} items`);
+
+          // Set state with fallback data
+          setChampions(transformedChampions);
+          setSpells(transformedSpells);
+          setWards(transformedWards);
+          setIcons(transformedIcons);
+          setItems(transformedItems);
+        } catch (fallbackError) {
+          console.error('Failed to load fallback data:', fallbackError);
+          // Set empty arrays as last resort
+          setChampions([]);
+          setItems([]);
+          setSpells([]);
+          setWards([]);
+          setIcons([]);
+        }
       } finally {
         setLoading(false);
       }
