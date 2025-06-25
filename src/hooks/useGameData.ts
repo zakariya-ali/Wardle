@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Champion, Item, SummonerSpell, Ward, SummonerIcon } from '../types';
 
+// Import local fallback data
+import championsData from '../data/champions.json';
+import itemsData from '../data/items.json';
+import spellsData from '../data/summonerSpells.json';
+import wardsData from '../data/wards.json';
+import iconsData from '../data/summonerIcons.json';
+
 // API URLs
 const CHAMPION_SUMMARY_URL = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json';
 const CHAMPIONS_URL = 'https://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/champions.json';
@@ -205,12 +212,14 @@ export const useGameData = () => {
 
       } catch (error) {
         console.error('Failed to load game data:', error);
-        // Fallback to empty arrays
-        setChampions([]);
-        setItems([]);
-        setSpells([]);
-        setWards([]);
-        setIcons([]);
+        
+        console.log('Using local fallback data...');
+        // Fallback to local data instead of empty arrays
+        setChampions(championsData as Champion[]);
+        setItems(itemsData as Item[]);
+        setSpells(spellsData as SummonerSpell[]);
+        setWards(wardsData as Ward[]);
+        setIcons(iconsData as SummonerIcon[]);
       } finally {
         setLoading(false);
       }
