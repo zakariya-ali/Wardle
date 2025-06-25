@@ -26,7 +26,12 @@ export const shouldResetDaily = (lastReset: string): boolean => {
   return lastResetDate < todayReset;
 };
 
-export const generateDailyAnswers = (champions: Champion[]): Record<string, string> => {
+export const generateDailyAnswers = (
+  champions: Champion[], 
+  wards: any[] = [], 
+  icons: any[] = [], 
+  spells: any[] = []
+): Record<string, string> => {
   const today = getDailyResetTime().toDateString();
   const seed = hashCode(today);
   
@@ -35,15 +40,30 @@ export const generateDailyAnswers = (champions: Champion[]): Record<string, stri
     return seed.value - 0.5;
   });
 
+  const shuffledWards = wards.length > 0 ? [...wards].sort(() => {
+    seed.next();
+    return seed.value - 0.5;
+  }) : [];
+
+  const shuffledIcons = icons.length > 0 ? [...icons].sort(() => {
+    seed.next();
+    return seed.value - 0.5;
+  }) : [];
+
+  const shuffledSpells = spells.length > 0 ? [...spells].sort(() => {
+    seed.next();
+    return seed.value - 0.5;
+  }) : [];
+
   return {
-    classic: shuffled[0].id,
-    quote: shuffled[1].id,
-    ability: shuffled[2].id,
-    splash: shuffled[3].id,
-    ward: 'ward_classic',
-    icon: 'icon_1',
-    spell: 'flash',
-    bravery: shuffled[4].id
+    classic: shuffled[0]?.id || '',
+    quote: shuffled[1]?.id || '',
+    ability: shuffled[2]?.id || '',
+    splash: shuffled[3]?.id || '',
+    ward: shuffledWards[0]?.id || 'ward_classic',
+    icon: shuffledIcons[0]?.id || 'icon_1',
+    spell: shuffledSpells[0]?.id || 'flash',
+    bravery: shuffled[4]?.id || ''
   };
 };
 

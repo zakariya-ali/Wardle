@@ -13,6 +13,11 @@ import Header from './components/Header';
 import ModeSelector from './components/ModeSelector';
 import ClassicMode from './components/modes/ClassicMode';
 import QuoteMode from './components/modes/QuoteMode';
+import AbilityMode from './components/modes/AbilityMode';
+import SplashArtMode from './components/modes/SplashArtMode';
+import WardMode from './components/modes/WardMode';
+import SummonerIconMode from './components/modes/SummonerIconMode';
+import SummonerSpellMode from './components/modes/SummonerSpellMode';
 import UltimateBraveryMode from './components/modes/UltimateBraveryMode';
 
 function App() {
@@ -22,7 +27,7 @@ function App() {
   // Initialize daily answers and reset if needed
   useEffect(() => {
     if (champions.length > 0 && (shouldResetDaily(gameState.lastReset) || Object.keys(gameState.dailyAnswers).length === 0)) {
-      const newAnswers = generateDailyAnswers(champions);
+      const newAnswers = generateDailyAnswers(champions, wards, icons, spells);
       const newGameState = {
         ...gameState,
         dailyAnswers: newAnswers,
@@ -33,7 +38,7 @@ function App() {
       setGameState(newGameState);
       saveGameState(newGameState);
     }
-  }, [champions]);
+  }, [champions, wards, icons, spells]);
 
   const handleModeChange = (mode: string) => {
     const newGameState = { ...gameState, currentMode: mode };
@@ -52,8 +57,17 @@ function App() {
     
     if (currentMode === 'classic') {
       isCorrect = guess.id === answer?.id;
-    } else if (currentMode === 'quote') {
+    } else if (currentMode === 'quote' || currentMode === 'ability' || currentMode === 'splash') {
       isCorrect = guess.toLowerCase() === answer?.name.toLowerCase();
+    } else if (currentMode === 'ward') {
+      const wardAnswer = getCurrentWardAnswer();
+      isCorrect = guess.toLowerCase() === wardAnswer?.name.toLowerCase();
+    } else if (currentMode === 'icon') {
+      const iconAnswer = getCurrentIconAnswer();
+      isCorrect = guess.toLowerCase() === iconAnswer?.name.toLowerCase();
+    } else if (currentMode === 'spell') {
+      const spellAnswer = getCurrentSpellAnswer();
+      isCorrect = guess.toLowerCase() === spellAnswer?.name.toLowerCase();
     }
 
     const newGameState = {
@@ -77,8 +91,23 @@ function App() {
     return champions.find(c => c.id === answerId) || null;
   };
 
+  const getCurrentWardAnswer = () => {
+    const answerId = gameState.dailyAnswers['ward'];
+    return wards.find(w => w.id === answerId) || null;
+  };
+
+  const getCurrentIconAnswer = () => {
+    const answerId = gameState.dailyAnswers['icon'];
+    return icons.find(i => i.id === answerId) || null;
+  };
+
+  const getCurrentSpellAnswer = () => {
+    const answerId = gameState.dailyAnswers['spell'];
+    return spells.find(s => s.id === answerId) || null;
+  };
+
   const handleReset = () => {
-    const newAnswers = generateDailyAnswers(champions);
+    const newAnswers = generateDailyAnswers(champions, wards, icons, spells);
     const newGameState = {
       currentMode: 'classic',
       dailyAnswers: newAnswers,
@@ -112,6 +141,64 @@ function App() {
           <QuoteMode
             champions={champions}
             answer={currentAnswer}
+            guesses={currentGuesses}
+            onGuess={handleGuess}
+            gameComplete={isComplete}
+          />
+        ) : null;
+
+      case 'ability':
+        return currentAnswer ? (
+          <AbilityMode
+            champions={champions}
+            answer={currentAnswer}
+            guesses={currentGuesses}
+            onGuess={handleGuess}
+            gameComplete={isComplete}
+          />
+        ) : null;
+
+      case 'splash':
+        return currentAnswer ? (
+          <SplashArtMode
+            champions={champions}
+            answer={currentAnswer}
+            guesses={currentGuesses}
+            onGuess={handleGuess}
+            gameComplete={isComplete}
+          />
+        ) : null;
+
+      case 'ward':
+        const wardAnswer = getCurrentWardAnswer();
+        return wardAnswer ? (
+          <WardMode
+            wards={wards}
+            answer={wardAnswer}
+            guesses={currentGuesses}
+            onGuess={handleGuess}
+            gameComplete={isComplete}
+          />
+        ) : null;
+
+      case 'icon':
+        const iconAnswer = getCurrentIconAnswer();
+        return iconAnswer ? (
+          <SummonerIconMode
+            icons={icons}
+            answer={iconAnswer}
+            guesses={currentGuesses}
+            onGuess={handleGuess}
+            gameComplete={isComplete}
+          />
+        ) : null;
+
+      case 'spell':
+        const spellAnswer = getCurrentSpellAnswer();
+        return spellAnswer ? (
+          <SummonerSpellMode
+            spells={spells}
+            answer={spellAnswer}
             guesses={currentGuesses}
             onGuess={handleGuess}
             gameComplete={isComplete}
