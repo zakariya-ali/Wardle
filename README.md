@@ -236,4 +236,3 @@ Organized static assets:
 
 ---
 
-*README generated combining API details, implementation status, and MVP specifications.*
